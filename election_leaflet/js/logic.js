@@ -37,7 +37,20 @@ async function getResponse() {
 	const data = await response.json(); // Extracting data as a JSON Object from the response
     console.log('async/await executed')
     //console.log(data)
-    L.geoJson(data).addTo(myMap);
+    L.geoJson(data,{
+
+        // automatically assigne the original geojson object
+        //assigned the layer that is created by leaflet and added to map
+
+        onEachFeature: function(feature, layer){
+
+            let wardName = feature.properties.ward
+
+            layer.bindPopup(wardName)
+
+            console.log('hello');
+        }
+    }).addTo(myMap);
 }
 
 getResponse()
