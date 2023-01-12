@@ -3,9 +3,6 @@ console.log("hello, World!")
 
 //leaflet [ latitude ,longitiude]
 
-//let myMap = L.map('map').setView([51.505, -0.09], 13);
-
-
 var myMap = L.map("map", {
     center: [41.881832, -87.623177],
     zoom: 11
@@ -32,8 +29,8 @@ function onMapClick(e) {
 myMap.on('click', onMapClick);
 */
 
-let link = 'nyc.geojson'
-link = 'https://raw.githubusercontent.com/zaynaib/chicago-elections/main/chicago-wards.geojson'
+let link = 'data/chicago-wards.geojson'
+//link = 'https://raw.githubusercontent.com/zaynaib/chicago-elections/main/chicago-wards.geojson'
 
 async function getResponse() {
 	const response = await fetch(link);
@@ -47,9 +44,3 @@ getResponse()
 
 
 
-
-// fetch(link)
-//     .then(function(response){
-//         console.log(response.json())
-//     }
-//     )
