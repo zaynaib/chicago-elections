@@ -32,6 +32,17 @@ myMap.on('click', onMapClick);
 let link = 'data/chicago-wards.geojson'
 //link = 'https://raw.githubusercontent.com/zaynaib/chicago-elections/main/chicago-wards.geojson'
 
+
+function assignPopup(feature, layer){
+    let wardName = feature.properties.ward
+
+    layer.bindPopup(wardName)
+
+    console.log('hello');
+}
+
+
+
 async function getResponse() {
 	const response = await fetch(link);
 	const data = await response.json(); // Extracting data as a JSON Object from the response
@@ -42,14 +53,7 @@ async function getResponse() {
         // automatically assigne the original geojson object
         //assigned the layer that is created by leaflet and added to map
 
-        onEachFeature: function(feature, layer){
-
-            let wardName = feature.properties.ward
-
-            layer.bindPopup(wardName)
-
-            console.log('hello');
-        }
+        onEachFeature: assignPopup
     }).addTo(myMap);
 }
 
