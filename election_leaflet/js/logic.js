@@ -13,10 +13,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(myMap);
 
+/*
 let marker = L.marker([51.5,-0.09]).addTo(myMap);
 
 marker.bindPopup("<b>Hello world!</b> I am a popup");
-/*
+
 var popup = L.popup();
 
 function onMapClick(e) {
@@ -36,7 +37,7 @@ let link = 'data/chicago-wards.geojson'
 function assignPopup(feature, layer){
     let wardName = feature.properties.ward
 
-    layer.bindPopup(wardName)
+    layer.bindPopup(`You are in ward <b>${wardName}</b>`)
 
     console.log('hello');
 }
@@ -60,7 +61,8 @@ async function getResponse() {
         // feature automatically assigne the original geojson object
         //assigned the layer that is created by leaflet and added to map
 
-        onEachFeature: assignPopup
+        onEachFeature: assignPopup,
+        filter: ward11
     }).addTo(myMap);
 }
 
