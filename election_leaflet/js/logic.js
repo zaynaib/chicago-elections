@@ -42,6 +42,13 @@ function assignPopup(feature, layer){
 }
 
 
+function ward11(feature){
+    if(feature.properties.ward == 11){
+        return true
+    }
+}
+
+
 
 async function getResponse() {
 	const response = await fetch(link);
@@ -50,7 +57,7 @@ async function getResponse() {
     //console.log(data)
     L.geoJson(data,{
 
-        // automatically assigne the original geojson object
+        // feature automatically assigne the original geojson object
         //assigned the layer that is created by leaflet and added to map
 
         onEachFeature: assignPopup
