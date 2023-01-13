@@ -1,6 +1,9 @@
 
 console.log("hello, World!")
 
+
+
+
 //leaflet [ latitude ,longitiude]
 
 var myMap = L.map("map", {
@@ -43,7 +46,15 @@ function assignPopup(feature, layer){
 }
 
 
+function getInputValue(){
+
+    let inputVal = document.getElementById("wardInput").value;
+    console.log(inputVal);
+    return getInputValue;
+}
+
 function ward11(feature){
+    let wardInput = getInputValue()
     if(feature.properties.ward == 11){
         return true
     }
